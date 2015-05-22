@@ -27,24 +27,28 @@ public class BatmanCarTest {
 	
 	@Test
 	public void testStart() {
-		BatmanCar car = new BatmanCar();
+		outContent.reset();
+		BatmanCar car = new BatmanCar("Alain", 14);
 		car.start();
 		String[] lines = outContent.toString().split("\n");
+		assertEquals("La voiture de " + car.getOwner() + " démarre...", lines[1]);
 		assertEquals("La voiture de " + car.getOwner() + " fait: Vroom Vroom!!!", lines[lines.length -1 ]);
-
-		outContent.reset();
-		car.initialize("Alain", 14);
 		assertEquals("La voiture de Batman doit toujours être noire", "black", car.getColor());
+		assertTrue("La voiture de Batman doit toujours être décapotable", car.isConvertible());
 	}
 	
 	@Test
 	public void testSetFlying() {
-		BatmanCar car = new BatmanCar();
+		BatmanCar car = new BatmanCar("Alain", 14);
 		boolean result = car.setFlying(true);
 		assertFalse(car.isFlying());
 		assertFalse("Pour voler la voiture doit être démarrée", result);
 		
+		outContent.reset();
 		car.start();
+		String[] lines = outContent.toString().split("\n");
+		assertEquals("La voiture de " + car.getOwner() + " fait: Vroom Vroom!!!", lines[lines.length -1 ]);
+
 		outContent.reset();
 		result = car.setFlying(true);
 		assertTrue(car.isFlying());
@@ -54,14 +58,14 @@ public class BatmanCarTest {
 
 		outContent.reset();
 		car.stop();
-		String[] lines = outContent.toString().split("\n");
+		lines = outContent.toString().split("\n");
 		assertEquals("La voiture de " + car.getOwner() + " tombe!!!!", lines[1]);
 
-		outContent.reset();
 		car.start();
+		outContent.reset();
 		car.setFlying(false);
 		lines = outContent.toString().split("\n");
-		assertEquals("Les ailes de la voiture de " + car.getOwner() + " se rétractent, la voiture atterrie…", lines[1]);
+		assertEquals("Les ailes de la voiture de " + car.getOwner() + " se rétractent, la voiture atterrie…", lines[0]);
 
 	}
 

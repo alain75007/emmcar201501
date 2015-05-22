@@ -35,8 +35,7 @@ public class CarTest {
 	
 	@Test
 	public void testInitialize() {
-		Car car = new Car();
-		car.initialize("Alain", "rouge", 12);
+		Car car = new Car("Alain", "rouge", 12);
 		assertEquals("power should be 12", 12, car.getPower());
 		assertEquals("Alain", car.getOwner());
 		assertEquals("rouge", car.getColor());
@@ -45,8 +44,7 @@ public class CarTest {
 	
 	@Test
 	public void testInitializeConvertible() {
-		Car car = new Car();
-		car.initialize("Alain", "rouge", 12, true);
+		Car car = new Car("Alain", "rouge", 12, true);
 		assertEquals("power should be 12", 12, car.getPower());
 		assertEquals("Alain", car.getOwner());
 		assertEquals("rouge", car.getColor());
@@ -55,8 +53,7 @@ public class CarTest {
 	
 	@Test
 	public void testVroomVroom() {
-		Car car = new Car();
-		car.initialize("Alain", "rouge", 12);
+		Car car = new Car("Alain", "rouge", 12);
 		boolean result = car.vroomvroom();
 		assertFalse("should not do vroomvroom if not started", result);
 		

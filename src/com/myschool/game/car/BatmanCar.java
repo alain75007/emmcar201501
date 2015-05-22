@@ -45,9 +45,9 @@ public class BatmanCar extends Car {
 		return result;
 	}
 
-	public void initialize(String owner, int power) {
+	public BatmanCar(String owner, int power) {
 		// TODO Auto-generated method stub
-		super.initialize(owner, "black", power, true);
+		super(owner, "black", power, true);
 	}
 
 }

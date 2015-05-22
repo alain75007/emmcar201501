@@ -28,15 +28,16 @@ public class Car {
 		return color;
 	}
 
-	public void initialize(String owner, String color, int power) {
+	
+	public Car(String owner, String color, int power) {
+		this(owner, color, power, false);
+	}
+
+	public Car(String owner, String color, int power, boolean isConvertible) {
+		this.isConvertible = isConvertible;
 		this.color = color;
 		this.owner = owner;
 		this.power = power;
-	}
-
-	public void initialize(String owner, String color, int power, boolean isConvertible) {
-		this.isConvertible = isConvertible;
-		this.initialize(owner, color, power);
 	}
 
 	public boolean vroomvroom() {
